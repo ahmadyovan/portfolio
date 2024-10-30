@@ -152,7 +152,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
 					</motion.div>
 				</AnimatePresence>
 			</div>
-			{/* <Background /> */}
+			<Background />
 		</div>
 	);
 }

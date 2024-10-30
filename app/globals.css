@@ -14,9 +14,9 @@
   }
 }
 
-* {
+/* * {
   border: 1px red solid;
-}
+} */
 
 body {
   overscroll-behavior-y: none;
