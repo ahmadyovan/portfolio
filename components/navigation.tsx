@@ -44,9 +44,9 @@ const Navigation = () => {
         <AnimatePresence mode="wait">
             <div className="w-full flex flex-col gap-5 pl-24">
                 {links.map((link) => (
-                    <motion.div key={link.id} initial="initial" animate="animate" exit="exit" whileHover="hover" whileTap={{ }} className="h-3 lg:h-4 w-10 relative rounded-e-full">
+                    <motion.div key={link.id} initial="initial" animate="animate" exit="exit" whileHover="hover" whileTap={{ }} className="h-3 lg:h-2 w-10 lg:w-5 relative rounded-e-full">
                         <Link href={link.href} className="">
-                            <motion.div variants={linkVariants} custom={pathname === link.href} className={`h-full w-full border-4 border-solid border-[#131313] rounded-full`}/>
+                            <motion.div variants={linkVariants} custom={pathname === link.href} className={`h-full w-full border-4 lg:border-2 border-solid border-[#131313] rounded-full`}/>
                         </Link>
                     </motion.div>
                 ))}

@@ -29,4 +29,42 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@media (max-height: 540px) {
+  .hidden-when-max-h-540 {
+    display: none;
+  }
+}
 
+@media (max-height: 480px) {
+  .hidden-when-max-h-480 {
+    display: none;
+  }
+}
+
+@media (max-height: 470px) {
+  .hidden-when-max-h-470 {
+    display: none;
+  }
+}
+
+@media (max-height: 460px) {
+  .hidden-when-max-h-460 {
+    display: none;
+    transform: translateY(0);
+  }
+
+  .reset-when-max-h-460 {
+    transform: translateY(0);
+  }
+
+  .trans-y {
+    transform: translateY(20);
+  }
+}
+
+
+@media (max-height: 390px) {
+  .hidden-when-max-h-390 {
+    display: none;
+  }
+}
