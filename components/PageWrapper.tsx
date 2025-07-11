@@ -6,7 +6,8 @@ import Navigation from '@/components/navigation';
 import Background from '@/components/background';
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { AnimatePresence, motion } from 'framer-motion';
-
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useTheme } from "@/app/context/ThemeContext";
 
 const SCROLL_DELAY = 1000;
 
@@ -30,6 +31,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
 	const router = useRouter();
 	const pathname = usePathname();
 	const routes = useMemo(() => ['/', '/about', '/project'], []);
+	const { color } = useTheme();
 	
 	const [isNavigating, setIsNavigating] = useState(false);
 	const touchStartY = useRef<number | null>(null);
@@ -142,17 +144,29 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
 				<div className="absolute top-0 left-0 h-full w-24 lg:flex items-center justify-end z-20 hidden">
 					<Navigation />
 				</div>
-				<AnimatePresence mode='wait'>
-					<motion.div key={pathname} className={`h-full w-full z-10 `}>
-						<motion.div  className='h-full w-full z-10 px-5' initial="initial" animate="animate" exit="exit" variants={Variants} transition={{ ease: 'easeInOut' }}>
-							<FrozenRouter>
-								{children}  			
-							</FrozenRouter>
+				<div className='h-full w-full'>
+					<div className="w-full absolute top-0 flex flex-col justify-center items-center pt-3">
+						<ChevronUp className="" color={`${color}`} size={24} />
+						<ChevronUp className={`-translate-y-3`} color={`${color}`} size={24} />
+					</div>
+					<AnimatePresence mode='wait'>
+						<motion.div key={pathname} className={`h-full w-full z-10 `}>
+							<motion.div  className='h-full w-full z-10 px-5' initial="initial" animate="animate" exit="exit" variants={Variants} transition={{ ease: 'easeInOut' }}>
+								<FrozenRouter>
+									{children}  			
+								</FrozenRouter>
+							</motion.div>
 						</motion.div>
-					</motion.div>
-				</AnimatePresence>
+					</AnimatePresence>
+					<div className="w-full absolute bottom-0 flex flex-col justify-center items-center py-4">
+						<ChevronDown className={`translate-y-3`} color={`${color}`} size={24} />
+						<ChevronDown color={`${color}`} size={24} />
+					</div>
+				</div>
 			</div>
-			<Background />
+			<div className='absolute opacity-70 h-full w-full'>
+				<Background />
+			</div>
 		</div>
 	);
 }

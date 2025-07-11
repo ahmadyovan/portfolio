@@ -11,10 +11,10 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [color, setColor] = useState<string>('#2BFF00');
+    const [color, setColor] = useState<string>('#008CFF');
     const pathname = usePathname();
 
-    const colors = useMemo(() => ['#2BFF00', '#FF3838', '#008CFF'], []);
+    const colors = useMemo(() => ['#008CFF'], []);
 
     // Buat getRandomColor sebagai callback agar tetap stabil
     const getRandomColor = useCallback(() => {
